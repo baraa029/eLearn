@@ -1,6 +1,7 @@
 import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:learning_track/screens/book/explore_screen.dart';
 import 'package:learning_track/screens/book/home_screen.dart';
 import 'package:learning_track/screens/courses/home_cours.dart';
 import 'package:learning_track/screens/detail_screen.dart';
@@ -38,7 +39,7 @@ void main() {
               bottomNavigationBarTheme: BottomNavigationBarThemeData(
                   backgroundColor: Colors.transparent)),
           debugShowCheckedModeBanner: false,
-          home: myApp(),
+          home: ExploreScreen(),
         ),
       )));
 }
