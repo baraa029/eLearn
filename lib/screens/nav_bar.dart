@@ -1,12 +1,15 @@
 import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:learning_track/screens/menu_Screen.dart';
+import 'package:learning_track/screens/drawer.dart';
 import 'package:provider/provider.dart';
 
 import '../provider/them_provider.dart';
 import 'book/explore_screen.dart';
+import 'book/home_screen.dart';
 import 'book/view_all_screen.dart';
 import 'courses/home_cours.dart';
-import 'stories/home_page.dart';
+import 'home_page.dart';
 
 class myApp extends StatelessWidget {
   // const myApp({Key? key}) : super(key: key);
@@ -22,8 +25,10 @@ class myApp extends StatelessWidget {
         return ExploreScreen();
       } else if (indexpage == 2) {
         return ViewAllScreen();
-      } else {
+      } else if (indexpage == 3) {
         return HomePage();
+      } else {
+        return menuScreen();
       }
     }
 
