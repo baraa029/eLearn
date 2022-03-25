@@ -5,9 +5,6 @@ import 'package:liquid_swipe/liquid_swipe.dart';
 
 import '../main_screen.dart';
 
-void main() {
-  runApp(const SplashScreen());
-}
 
 class SplashScreen extends StatefulWidget {
   static const style = TextStyle(
@@ -202,6 +199,7 @@ class _SplashScreen extends State<SplashScreen> {
         ],
       ),
     ),
+
   ];
 
   Widget _buildDot(int index) {
@@ -297,6 +295,10 @@ class _SplashScreen extends State<SplashScreen> {
   pageChangeCallback(int lpage) {
     setState(() {
       page = lpage;
+     if (page == 4){
+       RouterClass.routerClass.pushWithReplacementToSpecificScreenUsingWidget(myApp());
+
+     }
     });
   }
 }
