@@ -4,7 +4,7 @@ class ThemeProvider extends ChangeNotifier {
   Color settingscolor = Colors.grey;
   Color bookmarkcolor = Colors.white;
   Color home_filledcolor = Colors.grey;
-  int index = 1;
+  int index = 2;
 
   changeindex(int value) {
     index = value;

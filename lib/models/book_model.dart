@@ -10,20 +10,24 @@ class Book {
   final int pages_number;
   final Language language;
   final double price;
+  final String tag;
 
-  Book(
-      {this.imageUrl,
-      this.book_name,
-      this.auhton_name,
-      this.description,
-      this.rating,
-      this.pages_number,
-      this.language,
-      this.price});
+  Book({
+    this.imageUrl,
+    this.book_name,
+    this.auhton_name,
+    this.description,
+    this.rating,
+    this.pages_number,
+    this.language,
+    this.price,
+    this.tag,
+  });
 }
 
 List<Book> books = [
   Book(
+      tag: 'tag1',
       book_name: 'We Cast a Shadow',
       auhton_name: 'Maurice Carlos',
       description:
@@ -34,6 +38,7 @@ List<Book> books = [
       pages_number: 352,
       imageUrl: 'assets/images/book_covers/we_cast_a_shadow.jpg'),
   Book(
+      tag: 'tag2',
       imageUrl: 'assets/images/book_covers/jim_crow.jpg',
       book_name: 'Jim Crow',
       auhton_name: 'Jim Crow',
@@ -44,6 +49,7 @@ List<Book> books = [
       language: Language.English,
       price: 19),
   Book(
+      tag: 'tag3',
       imageUrl: 'assets/images/book_covers/convenience_Store_woman.jpg',
       book_name: 'Store Woman',
       auhton_name: 'Sayaka Murata',
@@ -54,6 +60,7 @@ List<Book> books = [
       language: Language.English,
       price: 14.72),
   Book(
+      tag: 'tag4',
       imageUrl: 'assets/images/book_covers/recursion.jpg',
       book_name: 'Recursion',
       auhton_name: 'Blake Crouch',
@@ -64,6 +71,7 @@ List<Book> books = [
       language: Language.English,
       price: 25),
   Book(
+      tag: 'tag5',
       imageUrl: 'assets/images/book_covers/harvard_square.jpg',
       book_name: 'Harvard Square',
       auhton_name: 'André Aciman',

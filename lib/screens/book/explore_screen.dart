@@ -26,23 +26,9 @@ class ExploreScreen extends StatelessWidget {
                     SizedBox(height: 18),
                     CategorySelector(),
                     SizedBox(height: 20),
-                    TrendingBooksCarousel(),
+                    TrendingBooksCarousel('tag1'),
                     SizedBox(height: 16),
-                    Container(
-                      height: 230,
-                      width: MediaQuery.of(context).size.width,
-                      child: ListView.builder(
-                        itemCount: books.length,
-                        scrollDirection: Axis.horizontal,
-                        physics: BouncingScrollPhysics(),
-                        itemBuilder: (context, index) {
-                          Book book = books[index];
-                          return ImageCarouselItem(
-                            book: book,
-                          );
-                        },
-                      ),
-                    ),
+                    BooksCarousel('tag2')
                   ],
                 ),
               )
@@ -55,6 +41,8 @@ class ExploreScreen extends StatelessWidget {
 }
 
 class TrendingBooksCarousel extends StatelessWidget {
+  String tag;
+  TrendingBooksCarousel(this.tag);
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -82,6 +70,47 @@ class TrendingBooksCarousel extends StatelessWidget {
               Book book = books[index];
               return ImageCarouselItem(
                 book: book,
+                tag: tag,
+              );
+            },
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class BooksCarousel extends StatelessWidget {
+  String tag;
+  BooksCarousel(this.tag);
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Container(
+          margin: EdgeInsets.only(left: 30, right: 0),
+          child: Text(
+            'Trending Books',
+            style: GoogleFonts.raleway(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF305F72)),
+          ),
+        ),
+        SizedBox(height: 20),
+        Container(
+          height: 230,
+          width: MediaQuery.of(context).size.width,
+          child: ListView.builder(
+            itemCount: books.length,
+            scrollDirection: Axis.horizontal,
+            physics: BouncingScrollPhysics(),
+            itemBuilder: (context, index) {
+              Book book = books[index];
+              return ImageCarouselItem(
+                book: book,
+                tag: tag,
               );
             },
           ),
@@ -93,8 +122,9 @@ class TrendingBooksCarousel extends StatelessWidget {
 
 class ImageCarouselItem extends StatelessWidget {
   final Book book;
+  String tag;
 
-  const ImageCarouselItem({this.book});
+  ImageCarouselItem({this.book, this.tag});
 
   @override
   Widget build(BuildContext context) {
@@ -127,7 +157,7 @@ class ImageCarouselItem extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(10),
                       child: Hero(
-                        tag: book.imageUrl,
+                        tag: book.imageUrl + tag,
                         child: Image.asset(
                           book.imageUrl,
                           height: 180,

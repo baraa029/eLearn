@@ -15,14 +15,13 @@ class HomeCourses extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                SvgPicture.asset("assets/icons/menu.svg"),
-                Image.asset("assets/images/user.png"),
-              ],
-            ),
-            SizedBox(height: 30),
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //   children: <Widget>[
+            //     SvgPicture.asset("assets/icons/menu.svg"),
+            //     Image.asset("assets/images/user.png"),
+            //   ],
+            // ),
             Text("Hey Alex,", style: kHeadingextStyle),
             Text("Find a course you want to learn", style: kSubheadingextStyle),
             Container(
@@ -106,6 +105,7 @@ class HomeCourses extends StatelessWidget {
                 },
               ),
             ),
+            SizedBox(height: 30),
           ],
         ),
       ),
