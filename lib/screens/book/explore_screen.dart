@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../models/book_model.dart';
-import 'book_screen.dart';
+import 'details_book_screen.dart';
 
 class ExploreScreen extends StatelessWidget {
   @override

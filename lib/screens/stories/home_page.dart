@@ -1,8 +1,9 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:learning_track/router/router.dart';
+import 'package:learning_track/screens/stories/detail_screen.dart';
 
-import 'detail_screen.dart';
 
 var cardAspectRatio = 12.0 / 16.0;
 var widgetAspectRatio = cardAspectRatio * 1.2;
@@ -208,7 +209,7 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        Navigator.of(context).pushNamed(DetailScreen.routeName);
+                        RouterClass.routerClass.pushToSpecificScreenUsingWidget(DetailScreen());
                       },
                       child: Favourites(
                         title: "The Dreaming Moon",
