@@ -12,13 +12,13 @@ import 'provider/them_provider.dart';
 import 'screens/courses/details_screen_cours.dart';
 
 void main() {
+  ///////// Tareq elaila
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setEnabledSystemUIOverlays([
     SystemUiOverlay.top,
   ]);
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
     statusBarColor: Colors.transparent,
-
   ));
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,

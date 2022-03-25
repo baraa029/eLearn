@@ -110,8 +110,8 @@ class _HomePageState extends State<HomePage> {
                       borderRadius: BorderRadius.circular(20.0),
                     ),
                     child: Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 22.0, vertical: 6.0),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 22.0, vertical: 6.0),
                       child: Center(
                         child: Text(
                           "Animated",
@@ -179,8 +179,8 @@ class _HomePageState extends State<HomePage> {
                       borderRadius: BorderRadius.circular(20.0),
                     ),
                     child: Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 22.0, vertical: 6.0),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 22.0, vertical: 6.0),
                       child: Center(
                         child: Text(
                           "Latest",
@@ -208,8 +208,7 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        Navigator.of(context)
-                            .pushNamed(DetailScreen.routeName);
+                        Navigator.of(context).pushNamed(DetailScreen.routeName);
                       },
                       child: Favourites(
                         title: "The Dreaming Moon",
@@ -385,7 +384,3 @@ class CardScrollWidget extends StatelessWidget {
     );
   }
 }
-git remote add origin https://github.com/Eng-tareq-ELaila/elearning_Track.git
-git branch -M main
-git push -u origin main
-
