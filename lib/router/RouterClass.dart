@@ -1,3 +1,4 @@
+import 'package:drawer_swipe/drawer_swipe.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -5,6 +6,7 @@ class RouterClass {
   RouterClass._();
   static RouterClass route = RouterClass._();
   GlobalKey<NavigatorState> navkey = GlobalKey();
+  var drawerKey = GlobalKey<SwipeDrawerState>();
 
   // pushToSecificSccrrenByName(String screenNavigator) {
   //   navkey.currentState.pushNamed(screenNavigator);

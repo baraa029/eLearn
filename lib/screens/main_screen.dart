@@ -1,5 +1,7 @@
 import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:learning_track/screens/menu_Screen.dart';
+import 'package:learning_track/screens/drawer.dart';
 import 'package:provider/provider.dart';
 
 import '../provider/them_provider.dart';
@@ -24,9 +26,9 @@ class myApp extends StatelessWidget {
       } else if (indexpage == 2) {
         return ViewAllScreen();
       } else if (indexpage == 3) {
-        return HomeScreen();
-      } else {
         return HomePage();
+      } else {
+        return menuScreen();
       }
     }
 
