@@ -385,3 +385,4 @@ class CardScrollWidget extends StatelessWidget {
     );
   }
 }
+
