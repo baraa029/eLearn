@@ -1,7 +1,10 @@
 import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:learning_track/router/router.dart';
+import 'package:learning_track/screens/SplashScreen/splash_ui.dart';
 import 'package:learning_track/screens/book/home_screen.dart';
+import 'package:learning_track/screens/book/view_all_screen.dart';
 import 'package:learning_track/screens/courses/home_cours.dart';
 import 'package:learning_track/screens/detail_screen.dart';
 import 'package:learning_track/screens/home_page.dart';
@@ -34,59 +37,14 @@ void main() {
           ),
         ],
         child: MaterialApp(
+          navigatorKey: RouterClass.routerClass.navKey,
           theme: ThemeData(
               bottomNavigationBarTheme: BottomNavigationBarThemeData(
                   backgroundColor: Colors.transparent)),
           debugShowCheckedModeBanner: false,
-          home: myApp(),
+          home: SplashScreen(),
         ),
       )));
 }
 
-class myApp extends StatelessWidget {
-  // const myApp({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    int indexpage = Provider.of<ThemeProvider>(context).index;
-
-    selectpage() {
-      if (indexpage == 0) {
-        return HomeCourses();
-      } else if (indexpage == 1) {
-        return HomeScreen();
-      } else {
-        return HomePage();
-      }
-    }
-
-    return Scaffold(
-        body: Stack(
-      children: [
-        selectpage(),
-        Column(
-          children: [
-            Spacer(),
-            FloatingNavbar(
-              borderRadius: 20,
-              onTap: (value) {
-                Provider.of<ThemeProvider>(context, listen: false)
-                    .changcolor(value);
-                Provider.of<ThemeProvider>(context, listen: false)
-                    .changeindex(value);
-              },
-              currentIndex: Provider.of<ThemeProvider>(context).index,
-              items: [
-                FloatingNavbarItem(icon: Icons.home, title: 'Home'),
-                FloatingNavbarItem(icon: Icons.explore, title: 'Explore'),
-                FloatingNavbarItem(
-                    icon: Icons.chat_bubble_outline, title: 'Chats'),
-                FloatingNavbarItem(icon: Icons.settings, title: 'Settings'),
-              ],
-            ),
-          ],
-        )
-      ],
-    ));
-  }
-}
