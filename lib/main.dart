@@ -10,6 +10,7 @@ import 'package:learning_track/screens/detail_screen.dart';
 import 'package:learning_track/screens/drawer.dart';
 import 'package:learning_track/screens/home_page.dart';
 import 'package:learning_track/screens/main_screen.dart';
+import 'package:learning_track/screens/pdf_Screen.dart';
 import 'package:provider/provider.dart';
 import 'package:rounded_tabbar_widget/rounded_tabbar_widget.dart';
 
@@ -50,7 +51,7 @@ void main() {
               bottomNavigationBarTheme: BottomNavigationBarThemeData(
                   backgroundColor: Colors.transparent)),
           debugShowCheckedModeBanner: false,
-          home: DrawerScreen(),
+          home: PdfScreen(),
         ),
       )));
 }
