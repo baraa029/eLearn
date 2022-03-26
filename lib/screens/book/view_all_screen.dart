@@ -38,7 +38,7 @@ class _ViewAllScreenState extends State<ViewAllScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade800,
+      backgroundColor:Color(0xFF0D1333),
       body: SizedBox(
         height: MediaQuery.of(context).size.height,
         child: Stack(
@@ -57,9 +57,9 @@ class _ViewAllScreenState extends State<ViewAllScreen> {
                     begin: Alignment.bottomCenter,
                     end: Alignment.topCenter,
                     colors: [
-                      Colors.black,
-                      Colors.black,
-                      Colors.black,
+                      Color(0xFF0D1333),
+                      Color(0xFF0D1333),
+                      Color(0xFF0D1333),
                       Colors.black12,
                       Colors.black12,
                       Colors.black12,

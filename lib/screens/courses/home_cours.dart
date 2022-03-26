@@ -10,6 +10,7 @@ class HomeCourses extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFF081430),
       body: Padding(
         padding: EdgeInsets.only(left: 20, top: 50, right: 20),
         child: Column(
@@ -22,7 +23,7 @@ class HomeCourses extends StatelessWidget {
             //     Image.asset("assets/images/user.png"),
             //   ],
             // ),
-            Text("Hey Alex,", style: kHeadingextStyle),
+            Text("Hey Alex,", style: kHeadingextStyle ),
             Text("Find a course you want to learn", style: kSubheadingextStyle),
             Container(
               margin: EdgeInsets.symmetric(vertical: 30),
@@ -53,7 +54,7 @@ class HomeCourses extends StatelessWidget {
                 Text("Category", style: kTitleTextStyle),
                 Text(
                   "See All",
-                  style: kSubtitleTextSyule.copyWith(color: kBlueColor),
+                  style: kSubtitleTextSyule.copyWith(color: Color(0xFFBFCAEF)),
                 ),
               ],
             ),
@@ -79,6 +80,7 @@ class HomeCourses extends StatelessWidget {
                       padding: EdgeInsets.all(20),
                       height: index.isEven ? 200 : 240,
                       decoration: BoxDecoration(
+                        color: Color(0xFFFF5E59),
                         borderRadius: BorderRadius.circular(16),
                         image: DecorationImage(
                           image: AssetImage(categories[index].image),

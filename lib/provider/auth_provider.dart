@@ -2,8 +2,6 @@ import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
-import '../router/RouterClass.dart';
 import '../data/auth_helper.dart';
 import '../models/user_model.dart';
 

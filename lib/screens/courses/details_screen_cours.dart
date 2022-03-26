@@ -11,6 +11,7 @@ class DetailsCours extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFF081430),
       // body: Container(
       //   width: double.infinity,
       //   decoration: BoxDecoration(
@@ -95,8 +96,7 @@ class DetailsCours extends StatelessWidget {
             child: Container(
               width: double.infinity,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(50),
-                color: Colors.white,
+                color:Color(0xFF081430),
               ),
               child: Stack(
                 children: <Widget>[
@@ -220,7 +220,7 @@ class CourseContent extends StatelessWidget {
           Text(
             number,
             style: kHeadingextStyle.copyWith(
-              color: kTextColor.withOpacity(.15),
+              color: Color(0xFFFFD073),
               fontSize: 32,
             ),
           ),
@@ -229,17 +229,20 @@ class CourseContent extends StatelessWidget {
             text: TextSpan(
               children: [
                 TextSpan(
-                  text: "$duration mins\n",
+                  text: "$title\n",
                   style: TextStyle(
-                    color: kTextColor.withOpacity(.5),
+                     color: Color(0xFFFFD073),
                     fontSize: 18,
                   ),
                 ),
                 TextSpan(
-                  text: title,
+
+                  text: "$duration mins",
                   style: kSubtitleTextSyule.copyWith(
                     fontWeight: FontWeight.w600,
+                    fontSize: 14,
                     height: 1.5,
+                    color: Colors.white,
                   ),
                 ),
               ],

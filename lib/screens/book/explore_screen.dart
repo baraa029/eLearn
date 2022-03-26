@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:learning_track/router/router.dart';
 
 import '../../models/book_model.dart';
 import 'details_book_screen.dart';
@@ -10,6 +11,7 @@ class ExploreScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFF081430),
       body: Stack(
         children: [
           // Blobs(),
@@ -55,7 +57,7 @@ class TrendingBooksCarousel extends StatelessWidget {
             style: GoogleFonts.raleway(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
-                color: Color(0xFF305F72)),
+                color: Color(0xFFFFD073)),
           ),
         ),
         SizedBox(height: 20),
@@ -172,26 +174,27 @@ class ImageCarouselItem extends StatelessWidget {
                   Container(
                     width: 120,
                     child: Text(
-                      "by ${book.auhton_name}",
-                      overflow: TextOverflow.clip,
+                      book.book_name,
+                      overflow: TextOverflow.ellipsis,
+                      softWrap: false,
                       style: TextStyle(
-                        fontSize: 13,
-                        color: Color(0xFF4F9DBC),
+                        color:Color(0xFFFFD073),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
                       ),
                     ),
                   ),
+
                 ],
               ),
               Container(
                 width: 120,
                 child: Text(
-                  book.book_name,
-                  overflow: TextOverflow.ellipsis,
-                  softWrap: false,
+                  "by ${book.auhton_name}",
+                  overflow: TextOverflow.clip,
                   style: TextStyle(
-                    color: Color(0xFF305F72),
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
+                    fontSize: 13,
+                    color: Colors.white,
                   ),
                 ),
               ),
@@ -254,7 +257,7 @@ class _CategorySelectorState extends State<CategorySelector> {
             style: GoogleFonts.raleway(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
-                color: Color(0xFF305F72)),
+                color: Color(0xFFFFD073)),
           ),
         ),
         Container(
@@ -280,14 +283,14 @@ class _CategorySelectorState extends State<CategorySelector> {
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                     color: isSelected
-                        ? Color(0xFF305F72)
-                        : Color(0xFFCBE5F3).withOpacity(0.46),
+                        ? Color(0xFFFFD073)
+                        : Color(0xFFFFD073).withOpacity(0.46),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Text(
                     describeEnum(category),
                     style: GoogleFonts.raleway(
-                      color: isSelected ? Colors.white : Color(0xFF305F72),
+                      color:  Colors.white ,
                       fontWeight:
                           isSelected ? FontWeight.w600 : FontWeight.bold,
                     ),
@@ -309,7 +312,7 @@ class CustomTextField extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 30),
       child: TextField(
         style: GoogleFonts.raleway(
-            color: Colors.black, fontWeight: FontWeight.w500),
+            color: Color(0xFFFFD073), fontWeight: FontWeight.w500),
         decoration: InputDecoration(
           fillColor: Colors.white,
           filled: true,
@@ -323,9 +326,13 @@ class CustomTextField extends StatelessWidget {
           hintStyle: GoogleFonts.raleway(
               color: Color(0xFF212121).withOpacity(0.5),
               fontWeight: FontWeight.w500),
-          suffixIcon: Icon(
-            Icons.search,
-            color: Color(0xFF305F72),
+          suffixIcon: IconButton(
+            onPressed: (){
+            } ,
+            icon : Icon(
+              Icons.search,
+              color: Color(0xFF305F72),
+            ),
           ),
         ),
       ),

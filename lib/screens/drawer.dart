@@ -2,12 +2,10 @@ import 'package:drawer_swipe/drawer_swipe.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:learning_track/screens/main_screen.dart';
+import 'package:learning_track/screens/nav_bar.dart';
 import 'package:provider/provider.dart';
 
-import '../router/RouterClass.dart';
 import '../provider/auth_provider.dart';
-import '../router/RouterClass.dart';
 
 class DrawerScreen extends StatelessWidget {
   @override
@@ -24,7 +22,6 @@ class DrawerScreen extends StatelessWidget {
       body: SwipeDrawer(
         radius: 10,
         bodySize: 130,
-        key: RouterClass.route.drawerKey,
 
         hasClone: false,
         bodyBackgroundPeekSize: 30,

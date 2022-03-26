@@ -53,7 +53,7 @@ class _HomePageState extends State<HomePage> {
           onPressed: () {},
         ),
         centerTitle: true,
-        backgroundColor: Color(0xFF2d3447),
+        backgroundColor:Color(0xFF0D1333),
         elevation: 0,
         actions: [
           IconButton(
@@ -74,7 +74,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      backgroundColor: Color(0xFF2d3447),
+      backgroundColor: Color(0xFF0D1333),
       body: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
         child: Column(
@@ -88,7 +88,7 @@ class _HomePageState extends State<HomePage> {
                     "Trending",
                     style: TextStyle(
                         fontFamily: "Calibre-Semibold",
-                        color: Colors.white,
+                        color:Color(0xFFFFD073),
                         fontSize: 46.0,
                         letterSpacing: 1.0),
                   ),
@@ -127,7 +127,7 @@ class _HomePageState extends State<HomePage> {
                   SizedBox(width: 20),
                   Text(
                     "25+ Stories",
-                    style: TextStyle(color: Colors.blueAccent),
+                    style: TextStyle(color: Colors.white),
                   ),
                 ],
               ),
@@ -196,7 +196,7 @@ class _HomePageState extends State<HomePage> {
                   SizedBox(width: 20),
                   Text(
                     "9+ Stories",
-                    style: TextStyle(color: Colors.blueAccent),
+                    style: TextStyle(color: Colors.redAccent),
                   ),
                 ],
               ),
@@ -361,7 +361,7 @@ class CardScrollWidget extends StatelessWidget {
                                 padding: EdgeInsets.symmetric(
                                     horizontal: 22.0, vertical: 6.0),
                                 decoration: BoxDecoration(
-                                    color: Colors.blueAccent,
+                                    color: Colors.redAccent,
                                     borderRadius: BorderRadius.circular(20.0)),
                                 child: Text("Read Later",
                                     style: TextStyle(color: Colors.white)),
