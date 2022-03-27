@@ -1,16 +1,14 @@
 import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:learning_track/screens/menu_Screen.dart';
-import 'package:learning_track/screens/drawer.dart';
+import 'package:learning_track/screens/stories/home_page.dart';
+import 'package:learning_track/screens/view_all_screen.dart';
 import 'package:provider/provider.dart';
 
 import '../provider/firestore_provider.dart';
 import '../provider/them_provider.dart';
 import 'book/explore_screen.dart';
-import 'book/home_screen.dart';
-import 'view_all_screen.dart';
 import 'courses/home_cours.dart';
-import 'home_page.dart';
 
 class myApp extends StatelessWidget {
   // const myApp({Key? key}) : super(key: key);
@@ -49,6 +47,9 @@ class myApp extends StatelessWidget {
           children: [
             Spacer(),
             FloatingNavbar(
+              backgroundColor: Color(0xFF6E8AFA),
+              selectedItemColor: Colors.white,
+              selectedBackgroundColor: Color(0xFFFFD073),
               borderRadius: 20,
               onTap: (value) {
                 Provider.of<ThemeProvider>(context, listen: false)

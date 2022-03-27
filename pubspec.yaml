@@ -70,9 +70,6 @@ flutter:
     - assets/icons/
     - assets/images/
     - assets/
-    - assets/The_Horrible_Dib_Dib.pdf
-    - assets/images/course/
-    - assets\images\book_covers\recursion.jpg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

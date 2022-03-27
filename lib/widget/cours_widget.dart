@@ -17,7 +17,7 @@ class CoursWidget extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => DetailsCours(cours[index]),
+            builder: (context) => DetailsCours(),
           ),
         );
       },

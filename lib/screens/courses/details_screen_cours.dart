@@ -11,11 +11,21 @@ import 'constants.dart';
 class DetailsCours extends StatelessWidget {
   CourseModel courseModel;
 
-  DetailsCours(this.courseModel);
+  DetailsCours();
   int x = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFF081430),
+      // body: Container(
+      //   width: double.infinity,
+      //   decoration: BoxDecoration(
+      //     color: Color(0xFFF5F4EF),
+      //     image: DecorationImage(
+      //       image: AssetImage("assets/images/ux_big.png"),
+      //       alignment: Alignment.topRight,
+      //     ),
+      //   ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -24,26 +34,108 @@ class DetailsCours extends StatelessWidget {
           Provider.of<FireProvider>(context).videoPlayer(courseModel),
           SizedBox(height: 20),
           Container(
-              margin: EdgeInsets.only(left: 20),
-              child: Text("Course Content", style: kTitleTextStyle)),
-          SizedBox(height: 10),
-          Container(
-            height: 500,
-            margin: EdgeInsets.symmetric(horizontal: 20),
-            child: ListView.builder(
-              itemCount: courseModel.courseurl.length,
-              itemBuilder: (BuildContext context, int index) {
-                return InkWell(
-                  onTap: () {
-                    Provider.of<FireProvider>(context, listen: false)
-                        .changindexvidoe(index);
-                  },
-                  child: CourseContent(
-                    number: '0${index + 1}',
-                    duration: 5.35,
-                    title: courseModel.coursename[index],
-                    isDone: true,
+            height: 30,
+            color: Color.fromARGB(255, 221, 217, 217),
+          ),
+          YoutubeAppDemo(videoIdd),
+          // SizedBox(height: 60),
+          Expanded(
+            child: Container(
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color:Color(0xFF081430),
+              ),
+              child: Stack(
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.all(30),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text("Course Content", style: kTitleTextStyle),
+                        SizedBox(height: 30),
+                        InkWell(
+                          onTap: () {},
+                          child: CourseContent(
+                            number: "01",
+                            duration: 5.35,
+                            title: "Welcome to the Course",
+                            isDone: true,
+                          ),
+                        ),
+                        CourseContent(
+                          number: '02',
+                          duration: 19.04,
+                          title: "Design Thinking - Intro",
+                          isDone: true,
+                        ),
+                        CourseContent(
+                          number: '03',
+                          duration: 15.35,
+                          title: "Design Thinking Process",
+                        ),
+                        CourseContent(
+                          number: '04',
+                          duration: 5.35,
+                          title: "Customer Perspective",
+                        ),
+                      ],
+                    ),
                   ),
+                  Positioned(
+                    right: 0,
+                    left: 0,
+                    bottom: 0,
+                    child: Container(
+                      padding: EdgeInsets.all(20),
+                      height: 100,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(40),
+                        boxShadow: [
+                          BoxShadow(
+                            offset: Offset(0, 4),
+                            blurRadius: 50,
+                            color: kTextColor.withOpacity(.1),
+                          ),
+                        ],
+                      ),
+                      child: Row(
+                        children: <Widget>[
+                          Container(
+                            padding: EdgeInsets.all(14),
+                            height: 56,
+                            width: 80,
+                            decoration: BoxDecoration(
+                              color: Color(0xFFFFEDEE),
+                              borderRadius: BorderRadius.circular(40),
+                            ),
+                            child: SvgPicture.asset(
+                                "assets/icons/shopping-bag.svg"),
+                          ),
+                          SizedBox(width: 20),
+                          Expanded(
+                            child: Container(
+                              alignment: Alignment.center,
+                              height: 56,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(40),
+                                color: kBlueColor,
+                              ),
+                              child: Text(
+                                "Buy Now",
+                                style: kSubtitleTextSyule.copyWith(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                ),
                 );
               },
             ),
@@ -75,7 +167,7 @@ class CourseContent extends StatelessWidget {
           Text(
             number,
             style: kHeadingextStyle.copyWith(
-              color: kTextColor.withOpacity(.15),
+              color: Color(0xFFFFD073),
               fontSize: 32,
             ),
           ),
@@ -84,17 +176,20 @@ class CourseContent extends StatelessWidget {
             text: TextSpan(
               children: [
                 TextSpan(
-                  text: "$duration mins\n",
+                  text: "$title\n",
                   style: TextStyle(
-                    color: kTextColor.withOpacity(.5),
+                     color: Color(0xFFFFD073),
                     fontSize: 18,
                   ),
                 ),
                 TextSpan(
-                  text: title,
+
+                  text: "$duration mins",
                   style: kSubtitleTextSyule.copyWith(
                     fontWeight: FontWeight.w600,
+                    fontSize: 14,
                     height: 1.5,
+                    color: Colors.white,
                   ),
                 ),
               ],

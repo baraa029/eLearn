@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:learning_track/screens/view_all_screen.dart';
 
-import '../detail_screen.dart';
+import '../stories/detail_screen.dart';
+
 
 class HomeScreen extends StatelessWidget {
   // const HomeScreen({Key? key}) : super(key: key);

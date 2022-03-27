@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:learning_track/router/router.dart';
 import 'package:liquid_swipe/liquid_swipe.dart';
 
-import '../main_screen.dart';
+import '../nav_bar.dart';
 
 
 class SplashScreen extends StatefulWidget {
