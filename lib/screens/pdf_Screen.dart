@@ -56,8 +56,10 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      body: SfPdfViewer.asset('assets/The_Horrible_Dib_Dib.pdf',
-          controller: _pdfViewerController, key: _pdfViewerStateKey),
+      body: SfPdfViewer.network(
+          'https://firebasestorage.googleapis.com/v0/b/e-learningtrack.appspot.com/o/book%2FBooksstream_k33_Book141MH.pdf?alt=media&token=7a20cbbb-480a-4595-a2c1-efbfffc76a42',
+          controller: _pdfViewerController,
+          key: _pdfViewerStateKey),
       appBar: AppBar(
         actions: <Widget>[
           IconButton(
