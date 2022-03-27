@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -11,6 +12,7 @@ import 'package:learning_track/screens/drawer.dart';
 import 'package:learning_track/screens/home_page.dart';
 import 'package:learning_track/screens/main_screen.dart';
 import 'package:learning_track/screens/pdf_Screen.dart';
+import 'package:learning_track/test.dart';
 import 'package:provider/provider.dart';
 import 'package:rounded_tabbar_widget/rounded_tabbar_widget.dart';
 
@@ -18,9 +20,11 @@ import 'provider/auth_provider.dart';
 import 'provider/them_provider.dart';
 import 'screens/courses/details_screen_cours.dart';
 
-void main() {
+Future<void> main() async {
   ///////// Tareq elaila
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
   SystemChrome.setEnabledSystemUIOverlays([
     SystemUiOverlay.top,
   ]);
@@ -51,7 +55,7 @@ void main() {
               bottomNavigationBarTheme: BottomNavigationBarThemeData(
                   backgroundColor: Colors.transparent)),
           debugShowCheckedModeBanner: false,
-          home: PdfScreen(),
+          home: myApp(),
         ),
       )));
 }
