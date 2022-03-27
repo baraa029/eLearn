@@ -3,14 +3,7 @@ import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.da
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:learning_track/router/router.dart';
-import 'package:learning_track/screens/SplashScreen/splash_ui.dart';
-import 'package:learning_track/screens/book/home_screen.dart';
-import 'package:learning_track/screens/book/view_all_screen.dart';
-import 'package:learning_track/screens/courses/home_cours.dart';
-import 'package:learning_track/screens/detail_screen.dart';
 import 'package:learning_track/screens/drawer.dart';
-import 'package:learning_track/screens/home_page.dart';
-import 'package:learning_track/screens/main_screen.dart';
 import 'package:learning_track/screens/pdf_Screen.dart';
 import 'package:learning_track/test.dart';
 import 'package:provider/provider.dart';
