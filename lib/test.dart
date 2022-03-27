@@ -7,7 +7,7 @@ class test extends StatelessWidget {
     return Scaffold(
       body: GestureDetector(
         onTap: () {
-          FirestoreHelper.firestoreHelper.getUserFromFs();
+          FirestoreHelper.firestoreHelper.getAllCars();
         },
         child: Container(
           height: 100,

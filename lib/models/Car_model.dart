@@ -1,87 +1,27 @@
 import 'dart:io';
 
-class Car {
+class CourseModel {
   String id;
-  String name;
-  String imageurl;
-  num Seating;
-  String comp;
-  String type;
-  String Range;
-  String View360;
-  num yearMake;
-  bool isFavorite;
-  num price;
-  // Map classifi;
-  List Reviews;
-  Map image;
-  //File imageToBeUpload;
-  String EngineType;
-  String TransmissionType;
-  String Specs;
-  num Horsepower;
-  num Warranty;
+  String nameCours;
+  String description;
+  List coursename;
+  List courseurl;
 
-  Car({
-    this.name,
-    this.comp,
-    this.imageurl,
-    this.yearMake,
-    this.type,
-    this.Seating,
-    this.Range,
-    this.View360,
-    this.isFavorite,
-    // this.imageToBeUpload,
-    this.image,
-    this.price,
-    // this.classifi,
-    this.Reviews,
-    this.EngineType,
-    this.TransmissionType,
-    this.Horsepower,
-    this.Warranty,
-    this.Specs,
-  });
-  Car.fromMap(Map<String, dynamic> map) {
+  CourseModel(
+      {this.nameCours, this.description, this.coursename, this.courseurl});
+  CourseModel.fromMap(Map<String, dynamic> map) {
     this.id = map['id'];
-    this.comp = map['comp'];
-    this.type = map['type'];
-    this.imageurl = map['imageurl'];
-    this.yearMake = map['yearMake'];
-    this.price = map['price'];
-    this.Seating = map['Seating'];
-    this.Range = map['Range'];
-    this.View360 = map['360View'];
-    this.isFavorite = map['isFavorite'];
-    this.name = map['name'];
-    // this.classifi = map['Classification'];
-    this.Reviews = map['Reviews'];
-    this.image = map['image'];
-    this.EngineType = map['EngineType'];
-    this.TransmissionType = map['TransmissionType'];
-    this.Horsepower = map['Horsepower'];
-    this.Warranty = map['Warranty'];
-    this.Specs = map['Specs'];
+    this.nameCours = map['nameCours'];
+    this.description = map['description'];
+    this.coursename = map['listcoursname'];
+    this.courseurl = map['listcoursurl'];
   }
   toMap() {
     return {
-      'comp': this.comp,
-      'name': this.name,
-      'type': this.type,
-      'yearMake': this.yearMake,
-      'isFavorite': this.isFavorite,
-      'price': this.price,
-      'image': this.image,
-      // 'Classification': this.classifi,
-      'Reviews': this.Reviews,
-      'imageurl': this.imageurl,
-      'Range': this.Range,
-      'EngineType': this.EngineType,
-      'TransmissionType': this.TransmissionType,
-      'Horsepower': this.Horsepower,
-      'Warranty': this.Warranty,
-      'Specs': this.Specs,
+      'nameCours': this.nameCours,
+      'description': this.description,
+      'listcoursname': this.coursename,
+      'listcoursurl': this.courseurl,
     };
   }
 }

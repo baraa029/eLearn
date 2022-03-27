@@ -4,18 +4,27 @@ import 'package:learning_track/screens/menu_Screen.dart';
 import 'package:learning_track/screens/drawer.dart';
 import 'package:provider/provider.dart';
 
+import '../provider/firestore_provider.dart';
 import '../provider/them_provider.dart';
 import 'book/explore_screen.dart';
 import 'book/home_screen.dart';
-import 'book/view_all_screen.dart';
+import 'view_all_screen.dart';
 import 'courses/home_cours.dart';
 import 'home_page.dart';
 
 class myApp extends StatelessWidget {
   // const myApp({Key? key}) : super(key: key);
+  int x = 0;
+  firedata(BuildContext context) {
+    if (x == 0) {
+      Provider.of<FireProvider>(context).getAllcar();
+      x = 1;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
+    firedata(context);
     int indexpage = Provider.of<ThemeProvider>(context).index;
 
     selectpage() {

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:learning_track/provider/firestore_provider.dart';
+import 'package:learning_track/widget/cours_widget.dart';
+import 'package:provider/provider.dart';
 
-import 'category.dart';
+import '../../models/category.dart';
 import 'constants.dart';
 import 'details_screen_cours.dart';
 
@@ -62,46 +65,11 @@ class HomeCourses extends StatelessWidget {
               child: MasonryGridView.count(
                 padding: EdgeInsets.all(0),
                 crossAxisCount: 2,
-                itemCount: categories.length,
+                itemCount: Provider.of<FireProvider>(context).courslist.length,
                 crossAxisSpacing: 20,
                 mainAxisSpacing: 20,
                 itemBuilder: (context, index) {
-                  return GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => DetailsCours(),
-                        ),
-                      );
-                    },
-                    child: Container(
-                      padding: EdgeInsets.all(20),
-                      height: index.isEven ? 200 : 240,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(16),
-                        image: DecorationImage(
-                          image: AssetImage(categories[index].image),
-                          fit: BoxFit.fill,
-                        ),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Text(
-                            categories[index].name,
-                            style: kTitleTextStyle,
-                          ),
-                          Text(
-                            '${categories[index].numOfCourses} Courses',
-                            style: TextStyle(
-                              color: kTextColor.withOpacity(.5),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  );
+                  return CoursWidget(index);
                 },
               ),
             ),

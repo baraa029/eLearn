@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:learning_track/screens/book/view_all_screen.dart';
+import 'package:learning_track/screens/view_all_screen.dart';
 
 import '../detail_screen.dart';
 

@@ -11,7 +11,11 @@ List<Category> categories = categoriesData
     .toList();
 
 var categoriesData = [
-  {"name": "Marketing", 'courses': 17, 'image': "assets/images/marketing.png"},
+  {
+    "name": "Marketing",
+    'courses': 17,
+    'image': "assets/images/course/course.jpg"
+  },
   {"name": "UX Design", 'courses': 25, 'image': "assets/images/ux_design.png"},
   {
     "name": "Photography",

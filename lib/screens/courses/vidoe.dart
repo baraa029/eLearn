@@ -16,27 +16,19 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 
 ///
-class YoutubeAppDemo extends StatefulWidget {
+class YoutubeAppDemo extends StatelessWidget {
   // List<String> vidoe;
   String vidoe;
   YoutubeAppDemo(this.vidoe);
-
-  @override
-  _YoutubeAppDemoState createState() => _YoutubeAppDemoState();
-}
-
-class _YoutubeAppDemoState extends State<YoutubeAppDemo> {
-  _YoutubeAppDemoState();
   YoutubePlayerController _controller;
-  // String videoId = widget.vidoe;
-
-  @override
-  void initState() {
-    super.initState();
+  intstate() {
     _controller = YoutubePlayerController(
-      initialVideoId: widget.vidoe,
+      initialVideoId: vidoe,
       params: YoutubePlayerParams(
-          // playlist: widget.vidoe,
+          // playlist: [
+          //   'https://youtu.be/P-EtR3vNNmE',
+          //   'https://youtu.be/BwM8eKZk5cY'
+          // ],
 
           // startAt: const Duration(minutes: 1, seconds: 36),
           showControls: true,
@@ -65,6 +57,7 @@ class _YoutubeAppDemoState extends State<YoutubeAppDemo> {
 
   @override
   Widget build(BuildContext context) {
+    intstate();
     ScreenUtil.init(
         BoxConstraints(
             maxWidth: MediaQuery.of(context).size.width,

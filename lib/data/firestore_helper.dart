@@ -22,15 +22,15 @@ class FirestoreHelper {
     return imageUrl;
   }
 
-  Future<List<Car>> getAllCars() async {
+  Future<List<CourseModel>> getAllCars() async {
     QuerySnapshot<Map<String, dynamic>> allProductsSnapshot =
-        await firebaseFirestore.collection('Car').get();
+        await firebaseFirestore.collection('courses').get();
 
-    List<Car> allProducts = allProductsSnapshot.docs.map((e) {
+    List<CourseModel> allProducts = allProductsSnapshot.docs.map((e) {
       Map documentMap = e.data();
       documentMap['id'] = e.id;
-      Car product = Car.fromMap(documentMap);
-      log('${product.name}');
+      CourseModel product = CourseModel.fromMap(documentMap);
+      log('${product.coursename}');
       return product;
     }).toList();
     log('allProducts');
@@ -38,7 +38,7 @@ class FirestoreHelper {
     return allProducts;
   }
 
-  Future<List<Car>> getOneCar(
+  Future<List<CourseModel>> getOneCar(
       {@required String classification, @required String object}) async {
     QuerySnapshot<Map<String, dynamic>> allProductsSnapshot =
         await firebaseFirestore
@@ -46,115 +46,13 @@ class FirestoreHelper {
             .where(classification, isEqualTo: object)
             .get();
 
-    List<Car> allCar = allProductsSnapshot.docs.map((e) {
+    List<CourseModel> allCar = allProductsSnapshot.docs.map((e) {
       Map documentMap = e.data();
       documentMap['id'] = e.id;
       // documentMap['imageurl'] = downloadImage('Cars', );
-      Car product = Car.fromMap(documentMap);
+      CourseModel product = CourseModel.fromMap(documentMap);
       return product;
     }).toList();
     return allCar;
-  }
-
-  Future<List> getAlllogocompany() async {
-    DocumentSnapshot<Map<String, dynamic>> productSnapshot =
-        await firebaseFirestore.collection('Logo').doc('logo').get();
-    Map<String, dynamic> logoMap = productSnapshot.data();
-    List logo = logoMap['logolist'];
-    print('logo');
-    print(logo);
-    return logo;
-  }
-
-  Future<List> getAlllogotype() async {
-    DocumentSnapshot<Map<String, dynamic>> productSnapshot =
-        await firebaseFirestore.collection('Logo').doc('logo').get();
-    Map<String, dynamic> logoMap = productSnapshot.data();
-    List type = logoMap['logotype'];
-    print('type');
-    print(type);
-    return type;
-  }
-
-  createUserInFs(Usermodel usermodel) async {
-    firebaseFirestore
-        .collection('users')
-        .doc(usermodel.id)
-        .set(usermodel.toMap());
-  }
-
-  addProductToFaviret(Car car) async {
-    //Get id user
-    String myid = FirebaseAuth.instance.currentUser.uid;
-    firebaseFirestore
-        .collection('users')
-        .doc(myid)
-        .collection('Faviret')
-        .doc(car.id)
-        .set(car.toMap());
-  }
-
-  getProductToFaviret() async {
-    String myid = FirebaseAuth.instance.currentUser.uid;
-    QuerySnapshot<Map<String, dynamic>> allProductsSnapshot =
-        await firebaseFirestore
-            .collection('users')
-            .doc(myid)
-            .collection('Faviret')
-            .get();
-
-    List<Car> allProducts = allProductsSnapshot.docs.map((e) {
-      Map documentMap = e.data();
-      documentMap['id'] = e.id;
-      Car product = Car.fromMap(documentMap);
-      log('${product.name}');
-      return product;
-    }).toList();
-    log('allProducts');
-    log('${allProducts}');
-    return allProducts;
-  }
-
-  deletProductToFaviret(Car car) async {
-    String myid = FirebaseAuth.instance.currentUser.uid;
-    firebaseFirestore
-        .collection('users')
-        .doc(myid)
-        .collection('Faviret')
-        .doc(car.id)
-        .delete();
-  }
-
-  Future<Usermodel> getUserFromFs() async {
-    DocumentSnapshot<Map<String, dynamic>> document = await firebaseFirestore
-        .collection('test')
-        .doc('iJkME8Aq76AmC5H9iPxn')
-        .get();
-    Map<String, dynamic> userData = document.data();
-    log(userData.toString());
-    userData['id'] = document.id;
-    Usermodel gdUser = Usermodel.fromMap(userData);
-    log('${gdUser.toMap()}');
-    return gdUser;
-  }
-
-  Future<String> uploadImage(File file) async {
-    String filePath = file.path;
-    String fileName = filePath.split('/').last;
-    Reference reference = firebaseStorage.ref('users/$fileName');
-    await reference.putFile(file);
-    String imageUrl = await reference.getDownloadURL();
-    return imageUrl;
-  }
-
-  editUser(Usermodel usermodel) async {
-    await firebaseFirestore
-        .collection('users')
-        .doc(usermodel.id)
-        .update(usermodel.toMap());
-  }
-
-  updatefavorite(Car car) async {
-    await firebaseFirestore.collection('Car').doc(car.id).update(car.toMap());
   }
 }
