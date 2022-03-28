@@ -26,7 +26,7 @@ class HomeCourses extends StatelessWidget {
             //     Image.asset("assets/images/user.png"),
             //   ],
             // ),
-            Text("Hey Alex,", style: kHeadingextStyle ),
+            Text("Hey Alex,", style: kHeadingextStyle),
             Text("Find a course you want to learn", style: kSubheadingextStyle),
             Container(
               margin: EdgeInsets.symmetric(vertical: 30),
@@ -66,7 +66,7 @@ class HomeCourses extends StatelessWidget {
               child: MasonryGridView.count(
                 padding: EdgeInsets.all(0),
                 crossAxisCount: 2,
-                itemCount: Provider.of<FireProvider>(context).courslist.length,
+                itemCount: 4,
                 crossAxisSpacing: 20,
                 mainAxisSpacing: 20,
                 itemBuilder: (context, index) {
@@ -86,7 +86,7 @@ class HomeCourses extends StatelessWidget {
                         color: Color(0xFFFF5E59),
                         borderRadius: BorderRadius.circular(16),
                         image: DecorationImage(
-                          image: AssetImage(categories[index].image),
+                          image: AssetImage(categories[2].image),
                           fit: BoxFit.fill,
                         ),
                       ),

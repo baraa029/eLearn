@@ -26,7 +26,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  PdfViewerConroller _pdfViewerController;
+  PdfViewerController _pdfViewerController;
   final GlobalKey<SfPdfViewerState> _pdfViewerStateKey = GlobalKey();
   @override
   void initState() {
