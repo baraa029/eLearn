@@ -1,9 +1,14 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:learning_track/colorConst.dart';
+import 'package:learning_track/provider/firestore_provider.dart';
 import 'package:learning_track/router/router.dart';
+import 'package:provider/provider.dart';
 
+import '../../models/bookModel.dart';
 import '../../models/book_model.dart';
 import 'details_book_screen.dart';
 
@@ -11,10 +16,10 @@ class ExploreScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF081430),
+      backgroundColor: Color.fromARGB(255, 223, 233, 252),
       body: Stack(
         children: [
-          // Blobs(),
+          Blobs(),
           CustomScrollView(
             physics: BouncingScrollPhysics(),
             keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
@@ -24,13 +29,16 @@ class ExploreScreen extends StatelessWidget {
                   children: [
                     SizedBox(height: 30),
                     SizedBox(height: 30),
-                    CustomTextField(),
-                    SizedBox(height: 18),
                     CategorySelector(),
+
+                    SizedBox(height: 18),
+                    CustomTextField(),
                     SizedBox(height: 20),
-                    TrendingBooksCarousel('tag1'),
+                    BooksCarousel('tag'),
+
                     SizedBox(height: 16),
-                    BooksCarousel('tag2')
+                    // TrendingBooksCarousel(),
+                    TrendingBooksCarousel(),
                   ],
                 ),
               )
@@ -43,8 +51,7 @@ class ExploreScreen extends StatelessWidget {
 }
 
 class TrendingBooksCarousel extends StatelessWidget {
-  String tag;
-  TrendingBooksCarousel(this.tag);
+  TrendingBooksCarousel();
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -53,11 +60,11 @@ class TrendingBooksCarousel extends StatelessWidget {
         Container(
           margin: EdgeInsets.only(left: 30, right: 0),
           child: Text(
-            'Trending Books',
+            'Arabic Stories',
             style: GoogleFonts.raleway(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
-                color: Color(0xFFFFD073)),
+                color: ColorConst.forground),
           ),
         ),
         SizedBox(height: 20),
@@ -65,15 +72,12 @@ class TrendingBooksCarousel extends StatelessWidget {
           height: 230,
           width: MediaQuery.of(context).size.width,
           child: ListView.builder(
-            itemCount: books.length,
+            itemCount: Provider.of<FireProvider>(context).booklist.length,
             scrollDirection: Axis.horizontal,
             physics: BouncingScrollPhysics(),
             itemBuilder: (context, index) {
-              Book book = books[index];
               return ImageCarouselItem(
-                book: book,
-                tag: tag,
-              );
+                  book: Provider.of<FireProvider>(context).booklist[index]);
             },
           ),
         ),
@@ -83,8 +87,8 @@ class TrendingBooksCarousel extends StatelessWidget {
 }
 
 class BooksCarousel extends StatelessWidget {
-  String tag;
-  BooksCarousel(this.tag);
+  String tage;
+  BooksCarousel(this.tage);
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -93,11 +97,11 @@ class BooksCarousel extends StatelessWidget {
         Container(
           margin: EdgeInsets.only(left: 30, right: 0),
           child: Text(
-            'Trending Books',
+            ' English Stories',
             style: GoogleFonts.raleway(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
-                color: Color(0xFF305F72)),
+                color: ColorConst.forground),
           ),
         ),
         SizedBox(height: 20),
@@ -105,14 +109,13 @@ class BooksCarousel extends StatelessWidget {
           height: 230,
           width: MediaQuery.of(context).size.width,
           child: ListView.builder(
-            itemCount: books.length,
+            itemCount: Provider.of<FireProvider>(context).booklist.length,
             scrollDirection: Axis.horizontal,
             physics: BouncingScrollPhysics(),
             itemBuilder: (context, index) {
-              Book book = books[index];
               return ImageCarouselItem(
-                book: book,
-                tag: tag,
+                tag: tage,
+                book: Provider.of<FireProvider>(context).reversbooklist[index],
               );
             },
           ),
@@ -123,9 +126,8 @@ class BooksCarousel extends StatelessWidget {
 }
 
 class ImageCarouselItem extends StatelessWidget {
-  final Book book;
-  String tag;
-
+  Book book;
+  String tag = '';
   ImageCarouselItem({this.book, this.tag});
 
   @override
@@ -159,13 +161,24 @@ class ImageCarouselItem extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(10),
                       child: Hero(
-                        tag: book.imageUrl + tag,
-                        child: Image.asset(
-                          book.imageUrl,
-                          height: 180,
-                          width: 120,
-                          alignment: Alignment.center,
-                          fit: BoxFit.cover,
+                        tag: book.imageurl + tag.toString(),
+                        child: Container(
+                          height: 175,
+                          width: 125,
+                          child: CachedNetworkImage(
+                            imageUrl: book.imageurl,
+                            imageBuilder: (context, imageProvider) => Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                image: DecorationImage(
+                                  image: imageProvider,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            ),
+                            errorWidget: (context, url, error) =>
+                                Icon(Icons.error),
+                          ),
                         ),
                       ),
                     ),
@@ -174,30 +187,29 @@ class ImageCarouselItem extends StatelessWidget {
                   Container(
                     width: 120,
                     child: Text(
-                      book.book_name,
+                      book.name,
                       overflow: TextOverflow.ellipsis,
                       softWrap: false,
                       style: TextStyle(
-                        color:Color(0xFFFFD073),
+                        color: Colors.black,
                         fontWeight: FontWeight.bold,
-                        fontSize: 16,
+                        fontSize: 17,
                       ),
                     ),
                   ),
-
                 ],
               ),
-              Container(
-                width: 120,
-                child: Text(
-                  "by ${book.auhton_name}",
-                  overflow: TextOverflow.clip,
-                  style: TextStyle(
-                    fontSize: 13,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
+              // Container(
+              //   width: 120,
+              //   child: Text(
+              //     "by ${book.auhton_name}",
+              //     overflow: TextOverflow.clip,
+              //     style: TextStyle(
+              //       fontSize: 13,
+              //       color: Colors.white,
+              //     ),
+              //   ),
+              // ),
             ],
           ),
         ),
@@ -243,8 +255,6 @@ class CategorySelector extends StatefulWidget {
 }
 
 class _CategorySelectorState extends State<CategorySelector> {
-  Categories selectedCategory = Categories.Comics;
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -253,53 +263,53 @@ class _CategorySelectorState extends State<CategorySelector> {
         Container(
           margin: EdgeInsets.only(left: 30, right: 0),
           child: Text(
-            'Categories',
+            ' Stories',
             style: GoogleFonts.raleway(
-                fontSize: 24,
+                fontSize: 27,
                 fontWeight: FontWeight.bold,
-                color: Color(0xFFFFD073)),
+                color: ColorConst.backgroundbar),
           ),
         ),
-        Container(
-          width: MediaQuery.of(context).size.width,
-          height: 50,
-          child: ListView.builder(
-            physics: BouncingScrollPhysics(),
-            itemCount: 5,
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (context, index) {
-              Categories category = Categories.values[index];
-              bool isSelected = category == selectedCategory;
-              return GestureDetector(
-                onTap: () {
-                  setState(() {
-                    selectedCategory = category;
-                  });
-                },
-                child: Container(
-                  width: 100,
-                  height: 35,
-                  margin: EdgeInsets.all(10),
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    color: isSelected
-                        ? Color(0xFFFFD073)
-                        : Color(0xFFFFD073).withOpacity(0.46),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Text(
-                    describeEnum(category),
-                    style: GoogleFonts.raleway(
-                      color:  Colors.white ,
-                      fontWeight:
-                          isSelected ? FontWeight.w600 : FontWeight.bold,
-                    ),
-                  ),
-                ),
-              );
-            },
-          ),
-        )
+        // Container(
+        //   width: MediaQuery.of(context).size.width,
+        //   height: 50,
+        //   child: ListView.builder(
+        //     physics: BouncingScrollPhysics(),
+        //     itemCount: 5,
+        //     scrollDirection: Axis.horizontal,
+        //     itemBuilder: (context, index) {
+        //       Categories category = Categories.values[index];
+        //       bool isSelected = category == selectedCategory;
+        //       return GestureDetector(
+        //         onTap: () {
+        //           setState(() {
+        //             selectedCategory = category;
+        //           });
+        //         },
+        //         child: Container(
+        //           width: 100,
+        //           height: 35,
+        //           margin: EdgeInsets.all(10),
+        //           alignment: Alignment.center,
+        //           decoration: BoxDecoration(
+        //             color: isSelected
+        //                 ? Color(0xFFFFD073)
+        //                 : Color(0xFFFFD073).withOpacity(0.46),
+        //             borderRadius: BorderRadius.circular(10),
+        //           ),
+        //           child: Text(
+        //             describeEnum(category),
+        //             style: GoogleFonts.raleway(
+        //               color: Colors.white,
+        //               fontWeight:
+        //                   isSelected ? FontWeight.w600 : FontWeight.bold,
+        //             ),
+        //           ),
+        //         ),
+        //       );
+        //     },
+        //   ),
+        // )
       ],
     );
   }
@@ -327,9 +337,8 @@ class CustomTextField extends StatelessWidget {
               color: Color(0xFF212121).withOpacity(0.5),
               fontWeight: FontWeight.w500),
           suffixIcon: IconButton(
-            onPressed: (){
-            } ,
-            icon : Icon(
+            onPressed: () {},
+            icon: Icon(
               Icons.search,
               color: Color(0xFF305F72),
             ),

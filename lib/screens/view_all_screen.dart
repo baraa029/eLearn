@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
@@ -12,39 +13,50 @@ class _ViewAllScreenState extends State<ViewAllScreen> {
   final CarouselController _carouselController = CarouselController();
   int _currentIndex = 0;
 
-  final List<dynamic> _games = [
-    {
-      'title': 'Cyberpunk 2077',
-      'image': 'assets/images/cyberpunk.png',
-      'description': 'Futuristic Game'
-    },
-    {
-      'title': 'Spiderman',
-      'image': 'assets/images/spiderman.png',
-      'description': 'Live like a Spider!'
-    },
-    {
-      'title': 'Outriders',
-      'image': 'assets/images/outrider3.jpg',
-      'description': 'Survival of the Best'
-    },
-    {
-      'title': 'Halo Infinite',
-      'image': 'assets/images/halo_infinite.jpg',
-      'description': 'The ultimate battel royale'
-    }
+  final List<String> _games = [
+    'assets/images/course/bookstart.jpeg',
+    'assets/images/course/bookstarts.jpeg',
+    'assets/images/course/coursestart.jpeg',
+
+    // {
+    //   'title': 'Cyberpunk 2077',
+    //   'image': 'assets/images/cyberpunk.png',
+    //   'description': 'Futuristic Game'
+    // },
+    // {
+    //   'title': 'Spiderman',
+    //   'image': 'assets/images/spiderman.png',
+    //   'description': 'Live like a Spider!'
+    // },
+    // {
+    //   'title': 'Outriders',
+    //   'image': 'assets/images/outrider3.jpg',
+    //   'description': 'Survival of the Best'
+    // },
+    // {
+    //   'title': 'Halo Infinite',
+    //   'image': 'assets/images/halo_infinite.jpg',
+    //   'description': 'The ultimate battel royale'
+    // }
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:Color(0xFF0D1333),
+      backgroundColor: Color.fromARGB(255, 255, 255, 255),
       body: SizedBox(
         height: MediaQuery.of(context).size.height,
         child: Stack(
           clipBehavior: Clip.none,
           children: [
-            Image.asset(_games[_currentIndex]['image'], fit: BoxFit.cover),
+            Container(
+                height: 700,
+                width: double.infinity,
+                child: Image.asset(
+                  _games[_currentIndex],
+                  fit: BoxFit.cover,
+                )),
+            // Image.network(_games[_currentIndex], fit: BoxFit.cover),
             Positioned(
               top: 0,
               left: 0,
@@ -59,12 +71,12 @@ class _ViewAllScreenState extends State<ViewAllScreen> {
                     colors: [
                       Color(0xFF0D1333),
                       Color(0xFF0D1333),
-                      Color(0xFF0D1333),
+                      Color.fromARGB(255, 124, 124, 128),
                       Colors.black12,
                       Colors.black12,
                       Colors.black12,
-                      Colors.black12,
-                      Colors.black12,
+                      Color.fromARGB(31, 247, 244, 244),
+                      Color.fromARGB(31, 255, 254, 254),
                     ],
                   ),
                 ),
@@ -101,49 +113,54 @@ class _ViewAllScreenState extends State<ViewAllScreen> {
                           child: Column(
                             children: [
                               Container(
-                                height: 320,
-                                margin: const EdgeInsets.only(top: 30),
-                                clipBehavior: Clip.hardEdge,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                                child: Image.asset(games['image'],
-                                    fit: BoxFit.cover),
-                              ),
+                                  height: 340,
+                                  margin: const EdgeInsets.only(top: 30),
+                                  clipBehavior: Clip.hardEdge,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  child: Container(
+                                    height: 500,
+                                    width: 300,
+                                    child: Image.asset(
+                                      _games[_currentIndex],
+                                      fit: BoxFit.cover,
+                                    ),
+                                  )),
                               const SizedBox(height: 20),
-                              Text(
-                                games['title'],
-                                style: const TextStyle(
-                                    fontSize: 20.0,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white),
-                              ),
+                              // Text(
+                              //   games['title'],
+                              //   style: const TextStyle(
+                              //       fontSize: 20.0,
+                              //       fontWeight: FontWeight.bold,
+                              //       color: Colors.white),
+                              // ),
                               // rating
                               const SizedBox(height: 10),
-                              Text(
-                                games['description'],
-                                style: const TextStyle(
-                                    fontSize: 18.0, color: Colors.grey),
-                                textAlign: TextAlign.center,
-                              ),
+                              // Text(
+                              //   games['description'],
+                              //   style: const TextStyle(
+                              //       fontSize: 18.0, color: Colors.grey),
+                              //   textAlign: TextAlign.center,
+                              // ),
                               const SizedBox(height: 10),
-                              Container(
-                                height: 40,
-                                width: 100,
-                                decoration: BoxDecoration(
-                                  color: Colors.green,
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                                child: const Center(
-                                  child: Text(
-                                    'Play Now',
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w400),
-                                  ),
-                                ),
-                              ),
+                              // Container(
+                              //   height: 40,
+                              //   width: 100,
+                              //   decoration: BoxDecoration(
+                              //     color: Colors.green,
+                              //     borderRadius: BorderRadius.circular(20),
+                              //   ),
+                              //   child: const Center(
+                              //     child: Text(
+                              //       'Play Now',
+                              //       style: TextStyle(
+                              //           color: Colors.white,
+                              //           fontSize: 16,
+                              //           fontWeight: FontWeight.w400),
+                              //     ),
+                              //   ),
+                              // ),
                             ],
                           ),
                         ),

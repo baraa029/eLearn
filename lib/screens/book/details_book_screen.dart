@@ -1,13 +1,17 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:learning_track/router/router.dart';
+import 'package:learning_track/screens/pdf_Screen.dart';
 
+import '../../models/bookModel.dart';
 import '../../models/book_model.dart';
 
 class BookDetails extends StatelessWidget {
-  final Book book;
+  Book book;
 
-  const BookDetails({this.book});
+  BookDetails({this.book});
 
   @override
   Widget build(BuildContext context) {
@@ -219,15 +223,32 @@ class BookDescription extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      book.description,
-      textAlign: TextAlign.justify,
-      style: TextStyle(
-        color: Colors.white,
-        height: 1.4,
-        fontSize: 16,
-        fontWeight: FontWeight.w300,
-      ),
+    return Column(
+      children: [
+        Text(
+          book.description,
+          textAlign: TextAlign.justify,
+          style: TextStyle(
+            color: Colors.white,
+            height: 1.4,
+            fontSize: 16,
+            fontWeight: FontWeight.w300,
+          ),
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        Text(
+          book.descriptionEn,
+          textAlign: TextAlign.justify,
+          style: TextStyle(
+            color: Colors.white,
+            height: 1.4,
+            fontSize: 16,
+            fontWeight: FontWeight.w300,
+          ),
+        )
+      ],
     );
   }
 }
@@ -256,15 +277,15 @@ class BookDetailsCard extends StatelessWidget {
         children: <Widget>[
           DetailNameAndValue(
             detailName: 'Rating',
-            value: '★ ${book.rating}/5',
+            value: '★ ${4.3}/5',
           ),
           DetailNameAndValue(
             detailName: 'Number of Pages',
-            value: '${book.pages_number.toString()} pages',
+            value: '${15} pages',
           ),
           DetailNameAndValue(
             detailName: 'Language',
-            value: describeEnum(book.language),
+            value: book.language,
           ),
         ],
       ),
@@ -316,32 +337,32 @@ class BookDetailsAndBookmarkRow extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Text(
-              '\$${book.price.toString()}',
-              style: TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.w600,
-                color: Colors.yellow,
-                letterSpacing: 1.5,
-              ),
-            ),
+            // Text(
+            //   '\$${book.price.toString()}',
+            //   style: TextStyle(
+            //     fontSize: 22,
+            //     fontWeight: FontWeight.w600,
+            //     color: Colors.yellow,
+            //     letterSpacing: 1.5,
+            //   ),
+            // ),
             SizedBox(height: 5),
             Text(
-              book.book_name,
+              book.name,
               style: GoogleFonts.raleway(
                 fontWeight: FontWeight.bold,
                 fontSize: 24,
                 color: Colors.white,
               ),
             ),
-            Text(
-              book.auhton_name,
-              style: TextStyle(
-                color: Color(0xFF305F72),
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
-              ),
-            ),
+            // Text(
+            //   book.auhton_name,
+            //   style: TextStyle(
+            //     color: Color(0xFF305F72),
+            //     fontWeight: FontWeight.bold,
+            //     fontSize: 16,
+            //   ),
+            // ),
           ],
         ),
         RoundedCornersIconButton(
@@ -371,14 +392,32 @@ class BookImage extends StatelessWidget {
               blurRadius: 20)
         ],
       ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(10),
-        child: Hero(
-          tag: book.imageUrl,
-          child: Image.asset(
-            book.imageUrl,
-            height: 270,
-            width: 180,
+      child: InkWell(
+        onTap: () {
+          RouterClass.routerClass
+              .pushToSpecificScreenUsingWidget(PdfScreen(book));
+        },
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(10),
+          child: Hero(
+            tag: book.imageurl,
+            child: Container(
+              height: 300,
+              width: 200,
+              child: CachedNetworkImage(
+                imageUrl: book.imageurl,
+                imageBuilder: (context, imageProvider) => Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    image: DecorationImage(
+                      image: imageProvider,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                errorWidget: (context, url, error) => Icon(Icons.error),
+              ),
+            ),
           ),
         ),
       ),

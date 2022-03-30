@@ -41,6 +41,9 @@ dependencies:
   firebase_storage: ^10.2.6
   flutter_rating_bar: ^4.0.0
   syncfusion_flutter_pdfviewer: ^19.1.69-beta
+  webview_flutter_plus: ^0.2.3
+  cached_network_image: ^3.2.0
+  hexcolor: ^2.0.6
 
  
   # The following adds the Cupertino Icons font to your application.
@@ -64,13 +67,87 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+    - assets/
+    - assets/images/
     - assets/images/blobs/
     - assets/images/book_covers/
     - assets/images/others/
     - assets/icons/
     - assets/images/
-    - assets/
-  #   - images/a_dot_ham.jpeg
+    - assets/images/course/
+    ############
+    - number/
+    - number/html5/data/css/
+    - number/html5/data/js/
+    - number/html5/lib/scripts/
+    - number/html5/lib/stylesheets/
+    - number/mobile/
+    - number/story_content/
+    - number/story_content/slides/
+    - number/story.html
+    ########
+    - Bodyparts/
+    - Bodyparts/html5/data/css/
+    - Bodyparts/html5/data/js/
+    - Bodyparts/html5/lib/scripts/
+    - Bodyparts/html5/lib/stylesheets/
+    - Bodyparts/mobile/
+    - Bodyparts/story_content/
+    - Bodyparts/story_content/slides/
+    - Bodyparts/story.html
+    ########
+    - letter/
+    - letter/html5/data/css/
+    - letter/html5/data/js/
+    - letter/html5/lib/scripts/
+    - letter/html5/lib/stylesheets/
+    - letter/mobile/
+    - letter/story_content/
+    - letter/story_content/slides/
+    - letter/story.html
+    ########
+    - letterno/
+    - letterno/html5/data/css/
+    - letterno/html5/data/js/
+    - letterno/html5/lib/scripts/
+    - letterno/html5/lib/stylesheets/
+    - letterno/mobile/
+    - letterno/story_content/
+    - letterno/story_content/slides/
+    - letterno/story.html
+    ########
+    - DAYS/
+    - DAYS/html5/data/css/
+    - DAYS/html5/data/js/
+    - DAYS/html5/lib/scripts/
+    - DAYS/html5/lib/stylesheets/
+    - DAYS/mobile/
+    - DAYS/story_content/
+    - DAYS/story_content/slides/
+    - DAYS/story.html
+    ########
+    - family/
+    - family/html5/data/css/
+    - family/html5/data/js/
+    - family/html5/lib/scripts/
+    - family/html5/lib/stylesheets/
+    - family/mobile/
+    - family/story_content/
+    - family/story_content/slides/
+    - family/story.html
+    ########
+    - numbertow/
+    - numbertow/html5/data/css/
+    - numbertow/html5/data/js/
+    - numbertow/html5/lib/scripts/
+    - numbertow/html5/lib/stylesheets/
+    - numbertow/mobile/
+    - numbertow/story_content/
+    - numbertow/story_content/slides/
+    - numbertow/story.html
+    ########
+  
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

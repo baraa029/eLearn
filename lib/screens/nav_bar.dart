@@ -1,5 +1,6 @@
 import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:learning_track/colorConst.dart';
 import 'package:learning_track/screens/menu_Screen.dart';
 import 'package:learning_track/screens/stories/home_page.dart';
 import 'package:learning_track/screens/view_all_screen.dart';
@@ -15,7 +16,8 @@ class myApp extends StatelessWidget {
   int x = 0;
   firedata(BuildContext context) {
     if (x == 0) {
-      Provider.of<FireProvider>(context).getAllcar();
+      Provider.of<FireProvider>(context).getAllcourse();
+      Provider.of<FireProvider>(context).getAllbook();
       x = 1;
     }
   }
@@ -47,9 +49,9 @@ class myApp extends StatelessWidget {
           children: [
             Spacer(),
             FloatingNavbar(
-              backgroundColor: Color(0xFF6E8AFA),
+              backgroundColor: Color.fromARGB(255, 200, 97, 231),
               selectedItemColor: Colors.white,
-              selectedBackgroundColor: Color(0xFFFFD073),
+              selectedBackgroundColor: Color.fromARGB(255, 255, 91, 79),
               borderRadius: 20,
               onTap: (value) {
                 Provider.of<ThemeProvider>(context, listen: false)
@@ -59,12 +61,31 @@ class myApp extends StatelessWidget {
               },
               currentIndex: Provider.of<ThemeProvider>(context).index,
               items: [
-                FloatingNavbarItem(icon: Icons.home, title: 'Home'),
-                FloatingNavbarItem(icon: Icons.explore, title: 'Explore'),
+                FloatingNavbarItem(
+                    customWidget: Image.asset(
+                      'assets/icons/course.png',
+                      height: 28,
+                    ),
+                    title: 'course'),
+                FloatingNavbarItem(
+                    customWidget: Image.asset(
+                      'assets/icons/book.png',
+                      height: 28,
+                    ),
+                    title: 'Stories'),
                 FloatingNavbarItem(icon: Icons.home, title: 'Home'),
                 FloatingNavbarItem(
-                    icon: Icons.chat_bubble_outline, title: 'Chats'),
-                FloatingNavbarItem(icon: Icons.settings, title: 'Settings'),
+                    customWidget: Image.asset(
+                      'assets/icons/interactive.png',
+                      height: 28,
+                    ),
+                    title: 'interactive'),
+                FloatingNavbarItem(
+                    customWidget: Image.asset(
+                      'assets/icons/menus.png',
+                      height: 28,
+                    ),
+                    title: 'menus'),
               ],
             ),
           ],

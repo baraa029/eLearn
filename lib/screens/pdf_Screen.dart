@@ -1,17 +1,54 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:learning_track/models/bookModel.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 class PdfScreen extends StatelessWidget {
+  Book book;
+  PdfScreen(this.book);
+  PdfViewerController pdfViewerController = PdfViewerController();
+  final GlobalKey<SfPdfViewerState> pdfViewerStateKey = GlobalKey();
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+      DeviceOrientation.landscapeLeft,
+      DeviceOrientation.landscapeRight
+    ]);
+    return Scaffold(
+      body: SfPdfViewer.network(book.pdfurl,
+          controller: pdfViewerController, key: pdfViewerStateKey),
+      // appBar: AppBar(
+      //   actions: <Widget>[
+      //     IconButton(
+      //         onPressed: () {
+      //           pdfViewerStateKey.currentState.openBookmarkView();
+      //         },
+      //         icon: Icon(
+      //           Icons.bookmark,
+      //           color: Colors.white,
+      //         )),
+      //     IconButton(
+      //         onPressed: () {
+      //           pdfViewerController.jumpToPage(5);
+      //         },
+      //         icon: Icon(
+      //           Icons.arrow_drop_down_circle,
+      //           color: Colors.white,
+      //         )),
+      //     IconButton(
+      //         onPressed: () {
+      //           pdfViewerController.zoomLevel = 1.25;
+      //         },
+      //         icon: Icon(
+      //           Icons.zoom_in,
+      //           color: Colors.white,
+      //         ))
+      //   ],
+      // ),
     );
   }
 }

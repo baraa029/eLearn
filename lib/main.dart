@@ -10,6 +10,7 @@ import 'package:learning_track/screens/view_all_screen.dart';
 import 'package:learning_track/screens/courses/home_cours.dart';
 import 'package:learning_track/screens/drawer.dart';
 import 'package:learning_track/screens/pdf_Screen.dart';
+import 'package:learning_track/screens/webviwe.dart';
 import 'package:learning_track/test.dart';
 import 'package:provider/provider.dart';
 import 'package:rounded_tabbar_widget/rounded_tabbar_widget.dart';
@@ -59,7 +60,7 @@ Future<void> main() async {
               bottomNavigationBarTheme: BottomNavigationBarThemeData(
                   backgroundColor: Colors.transparent)),
           debugShowCheckedModeBanner: false,
-          home: myApp(),
+          home: SplashScreen(),
         ),
       )));
 }

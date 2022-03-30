@@ -8,6 +8,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:learning_track/provider/firestore_provider.dart';
+import 'package:provider/provider.dart';
 // import 'package:specifications_cars/widgets/widgetVidoe/meta_data_section.dart';
 // import 'package:specifications_cars/widgets/widgetVidoe/play_pause_button_bar.dart';
 // import 'package:specifications_cars/widgets/widgetVidoe/player_state_section.dart';
@@ -21,13 +23,22 @@ class YoutubeAppDemo extends StatelessWidget {
   String vidoe;
   YoutubeAppDemo(this.vidoe);
   YoutubePlayerController _controller;
-  intstate() {
+
+  @override
+  Widget build(BuildContext context) {
+    // controller = null;
+    // List<String> list =
+    //     Provider.of<FireProvider>(context).courslist[0].courseurl;
+
     _controller = YoutubePlayerController(
       initialVideoId: vidoe,
       params: YoutubePlayerParams(
+          // origin: vidoe,
           // playlist: [
-          //   'https://youtu.be/P-EtR3vNNmE',
-          //   'https://youtu.be/BwM8eKZk5cY'
+          //   'ocI-Fd26MGY',
+          //   'Rlr2jTz9Cmo',
+          //   'uiv8-D3AyU4',
+          //   'Ejse1c2xFhI'
           // ],
 
           // startAt: const Duration(minutes: 1, seconds: 36),
@@ -39,7 +50,7 @@ class YoutubeAppDemo extends StatelessWidget {
           useHybridComposition: true,
           playsInline: false),
     );
-
+    log(vidoe);
     _controller.onEnterFullscreen = () async {
       await SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
       SystemChrome.setPreferredOrientations([
@@ -53,11 +64,8 @@ class YoutubeAppDemo extends StatelessWidget {
 
       log('Exited Fullscreen');
     };
-  }
 
-  @override
-  Widget build(BuildContext context) {
-    intstate();
+    // intstate();
     ScreenUtil.init(
         BoxConstraints(
             maxWidth: MediaQuery.of(context).size.width,
@@ -67,7 +75,7 @@ class YoutubeAppDemo extends StatelessWidget {
         minTextAdapt: true,
         orientation: Orientation.portrait);
 
-    const player = YoutubePlayerIFrame();
+    var player = YoutubePlayerIFrame();
     return Container(
       height: 250,
       // margin: EdgeInsets.only(top: 20, bottom: 10),

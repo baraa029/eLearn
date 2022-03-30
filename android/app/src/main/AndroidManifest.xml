@@ -1,7 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.learning_track">
+    
    <application
-        android:label="learning_track"
+   
+   android:usesCleartextTraffic="true"
+        android:label="scool"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
@@ -38,4 +41,11 @@
             android:name="flutterEmbedding"
             android:value="2" />
     </application>
+    <uses-permission android:name="android.permission.CAMERA"/>
+<uses-feature android:name="android.hardware.camera" android:required="true"/>
+<uses-feature android:name="android.hardware.camera.autofocus"/>
+<uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+
+<uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" /> 
 </manifest>
